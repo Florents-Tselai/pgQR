@@ -7,8 +7,18 @@ you probably noticed that QR codes were extremely popular everywhere!
 
 So naturally, here's an extension that brings QR support to Postgres!
 
+## Usage
+
+Encode `text` and store the QR code in a file.
+
 ```tsql
-select qr('No more Greek food!', '/tmp/message.png')
+SELECT qr('No more Greek food!', '/tmp/message.png');
+```
+
+You can also generate a QR as ASCII
+
+```tsql                                                     
+SELECT qr_ascii('Hello World!");
 ```
 
 ## Installation
@@ -16,10 +26,14 @@ select qr('No more Greek food!', '/tmp/message.png')
 ```
 cd /tmp
 git clone https://github.com/Florents-Tselai/pgQR.git
-cd pgqr
+cd pgQR
 make
 make install # may need sudo
 ```
 
-**NOTE**
-Don't use this for encryption!
+```tsql
+CREATE EXTENSION qr;
+```
+
+> [!WARNING]
+> Don't use this for encryption!
